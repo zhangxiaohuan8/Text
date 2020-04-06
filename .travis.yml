@@ -3,6 +3,7 @@ node_js:
   - "node"
 
 after_script:
+  - grunt list
   - grunt
   - grunt minify
   - cd ./dist

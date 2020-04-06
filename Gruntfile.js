@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         options: {
           configFile: '.eslintrc.json'
         },
-        target: 'js/note.js',
+        target: 'dist/list.js',
       },
       htmlmin: {
         options: {
@@ -34,10 +34,16 @@ module.exports = function (grunt) {
       uglify: {
         release:{
           files: {
-            'dist/js/note.js': 'js/note.js',
+            'dist/js/note.js': 'dist/list.js',
           }
         }
-      }	    
+      }	,
+      concat: {
+        js: {
+          src: ['js/note.js', 'js/mune.js'],
+          dest: 'dist/list.js'
+        }
+      }  
     });
   
     grunt.loadNpmTasks('grunt-contrib-csslint');
@@ -46,6 +52,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.registerTask('list', ['concat']);
     grunt.registerTask('default', ['htmlhint', 'csslint', 'eslint']);
     grunt.registerTask('minify', ['htmlmin', 'cssmin', 'uglify']);
   };
