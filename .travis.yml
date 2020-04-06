@@ -11,7 +11,7 @@ after_script:
   - git config user.email "${USER_EMAIL}"
 
   - git add .
-  - git commit -m "记事本"
+  - git commit -m "text"
   - git push --force --quiet "https://${ACC_TOKEN}@${GH_REF}" master:${BRANCH}
 
 branches:
